@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>SVG Image and Input Example</title>
+    <style>
+        body {
+            background-color: #333;
+            color: #f63939; /* Set text color to #f63939 */
+            font-weight: bold;
+        }
+        .container {
+            display: flex;
+        }
+        .svg-container {
+            flex: 1;
+        }
+        .input-container {
+            flex: 1;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+        .input-group {
+            display: flex;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+        .input-group label {
+            width: 120px;
+            margin-right: 10px;
+        }
+        .input-group input {
+            flex: 1;
+        }
+    </style>
+</head>
+<body>
+    <h1>SVG Image and Input Example</h1>
+    <div class="container">
+        <div class="svg-container">
+            <img src="../static/plot.svg" alt="Plot Image" width="500" height="400">
+        </div>
+        <div class="input-container">
+            <h2>Enter Values</h2>
+            <form action="/predict" method="POST">
+
+                <div class="input-group">
+                    <label for="person_capacity">Person Capacity:</label>
+                    <input type="text" id="person_capacity" name="person_capacity" list="capacity-list">
+                    <datalist id="capacity-list">
+                        <option value="2"></option>
+                        <option value="3"></option>
+                        <option value="4"></option>
+                        <option value="5"></option>
+                        <option value="6"></option>
+                    </datalist>
+                </div>
+                
+                <div class="input-group">
+                    <label for="Multiple_Rooms">Multiple Rooms:</label>
+                    <input type="text" id="Multiple_Rooms" name="Multiple_Rooms" list="Multiple_Rooms-list">
+                    <datalist id="Multiple_Rooms-list">
+                        <option value="True"></option>
+                        <option value="False"></option>
+                    </datalist>
+                </div>
+
+                <div class="input-group">
+                    <label for="bussiness">Bussiness:</label>
+                    <input type="text" id="bussiness" name="bussiness" list="bussiness-list">
+                    <datalist id="bussiness-list">
+                        <option value="True"></option>
+                        <option value="False"></option>
+                    </datalist>
+                </div>
+
+                <div class="input-group">
+                    <label for="Cleanliness_Rating">Cleanliness Rating:</label>
+                    <input type="text" id="Cleanliness_Rating" name="Cleanliness_Rating" list="Cleanliness_Rating-list">
+                    <datalist id="Cleanliness_Rating-list">
+                        <option value="2"></option>
+                        <option value="3"></option>
+                        <option value="4"></option>
+                        <option value="5"></option>
+                        <option value="6"></option>
+                        <option value="7"></option>
+                        <option value="8"></option>
+                        <option value="9"></option>
+                        <option value="10"></option>
+                    </datalist>
+                </div>
+
+                <div class="input-group">
+                    <label for="Guest Satisfaction">Guest Satisfaction:</label>
+                    <input type="number" id="Guest Satisfaction" name="Guest Satisfaction"
+                           placeholder="Enter a value between 20-100"
+                           min="20" max="100"
+                           oninput="validateInput(this)">
+                </div>
+                
+                <script>
+                    function validateInput(inputElement) {
+                        const value = inputElement.value;
+                        if (value !== '' && (value < 20 || value > 100)) {
+                            inputElement.value = '';
+                            inputElement.focus();
+                        }
+                    }
+                </script>
+
+                <div class="input-group">
+                    <label for="Bedrooms">Bedrooms:</label>
+                    <input type="text" id="Bedrooms" name="Bedrooms" list="Bedrooms-list">
+                    <datalist id="Bedrooms-list">
+                        <option value="0"></option>
+                        <option value="1"></option>
+                        <option value="2"></option>
+                        <option value="3"></option>
+                        <option value="4"></option>
+                        <option value="5"></option>
+                        <option value="6"></option>
+                        <option value="7"></option>
+                        <option value="8"></option>
+                        <option value="9"></option>
+                        <option value="10"></option>
+                    </datalist>
+                </div>
+
+                <div class="input-group">
+                    <label for="City_Center (km)">City Center (km):</label>
+                    <input type="number" id="City_Center (km)" name="City_Center (km)"
+                           placeholder="Enter a value between 0.1-25"
+                           min="0.1" max="25"
+                           oninput="validateInput1(this)">
+                </div>
+                
+                <script>
+                    function validateInput1(inputElement) {
+                        const value = inputElement.value;
+                        if (value !== '' && (value < 0.1 || value > 25)) {
+                            inputElement.value = '';
+                            inputElement.focus();
+                        }
+                    }
+                </script>
+
+
+                <div class="input-group">
+                    <label for="Metro_Distance_(km)">Metro Distance (km):</label>
+                    <input type="number" id="Metro_Distance_(km)" name="Metro_Distance_(km)"
+                        placeholder="Enter a value between 0.01-14"
+                        min="0.01" max="14"
+                        oninput="validateInput2(this)">
+                </div>
+
+                <script>
+                    function validateInput2(inputElement) {
+                        const value = inputElement.value;
+                        if (value !== '' && (value < 0.01 || value > 14)) {
+                            inputElement.value = '';
+                            inputElement.focus();
+                        }
+                    }
+                </script>
+
+                <div class="input-group">
+                    <label for="Normalised_Attraction_Index">Normalised Attraction Index:</label>
+                    <input type="number" id="Normalised_Attraction_Index" name="Normalised_Attraction_Index"
+                        placeholder="Enter a value between 93-100"
+                        min="93" max="100"
+                        oninput="validateInput3(this)">
+                </div>
+
+                <script>
+                    function validateInput3(inputElement) {
+                        const value = inputElement.value;
+                        if (value !== '' && (value < 93 || value > 100)) {
+                            inputElement.value = '';
+                            inputElement.focus();
+                        }
+                    }
+                </script>
+
+
+                <div class="input-group">
+                    <label for="Normalised_Restraunt_Index">Normalised Restraunt Index:</label>
+                    <input type="number" id="Normalised_Restraunt_Index" name="Normalised_Restraunt_Index"
+                        placeholder="Enter a value between 60-100"
+                        min="60" max="100"
+                        oninput="validateInput4(this)">
+                </div>
+
+                <script>
+                    function validateInput4(inputElement) {
+                        const value = inputElement.value;
+                        if (value !== '' && (value < 60 || value > 100)) {
+                            inputElement.value = '';
+                            inputElement.focus();
+                        }
+                    }
+                </script>
+
+
+
+
+                
+                <!-- Add more input groups as needed -->
+                <div class="input-group">
+                    <label for="city">City:</label>
+                    <input type="text" id="city" name="city" list="city-list">
+                    <datalist id="city-list">
+                        <option value="Amsterdam"></option>
+                        <option value="Athens"></option>
+                        <option value="Barcelona"></option>
+                        <option value="Berlin"></option>
+                        <option value="Budapest"></option>
+                        <option value="Lisbon"></option>
+                        <option value="Paris"></option>
+                        <option value="Rome"></option>
+                        <option value="Vienna"></option>
+                        <!-- Add more city options as needed -->
+                    </datalist>
+                </div>
+                
+                <div class="input-group">
+                    <label for="Room_Type">Room Type:</label>
+                    <input type="text" id="Room_Type" name="Room_Type" list="Room_Type-list">
+                    <datalist id="Room_Type-list">
+                        <option value="Entire home/apt"></option>
+                        <option value="Private room"></option>
+                        <option value="Shared room"></option>
+                        <!-- Add more city options as needed -->
+                    </datalist>
+                </div>
+
+                <!-- Add more input groups as needed -->
+                <input type="submit" value="Submit">
+            </form>
+        </div>
+    </div>
+</body>
+</html>
