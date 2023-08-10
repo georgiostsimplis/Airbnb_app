@@ -1,5 +1,9 @@
 pandas
 numpy
-flask
-plotly
--e .
+matplotlib
+scikit-learn
+catboost
+xgboost
+Flask
+
+#-e .
