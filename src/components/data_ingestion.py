@@ -31,7 +31,19 @@ class DataIngestion:
             os.makedirs(os.path.dirname(self.ingestion_config.train_data_path),exist_ok=True)
 
             df.to_csv(self.ingestion_config.raw_data_path,index=False,header=True)
-            df = df
+            
+            df = df.drop(['Shared Room','Private Room','Superhost',
+                          'Attraction Index','Restraunt Index', 'Normalised Attraction Index', 'Normalised Restraunt Index'],axis=1)
+            
+            q1=df['Price'].quantile(.25)
+            q3=df['Price'].quantile(.75)
+            iqr=q3-q1
+
+            limit_low=q1-iqr*1.5
+            limit_high=q3+iqr*1.5
+            
+            df = df[df['Price']<limit_high]
+            
             logging.info("Train test split initiated")
             train_set,test_set=train_test_split(df,test_size=0.2,random_state=42)
 
@@ -39,7 +51,7 @@ class DataIngestion:
 
             test_set.to_csv(self.ingestion_config.test_data_path,index=False,header=True)
 
-            logging.info("Inmgestion of the data is completed")
+            logging.info("Ingestion of the data is completed")
 
             return(
                 self.ingestion_config.train_data_path,

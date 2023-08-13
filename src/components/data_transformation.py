@@ -16,7 +16,7 @@ from src.utils import save_object
 
 @dataclass
 class DataTransformationConfig:
-    preprocessor_obj_file_path=os.path.join('artifacts',"proprocessor.pkl")
+    preprocessor_obj_file_path=os.path.join('artifacts',"preprocessor.pkl")
 
 class DataTransformation:
     def __init__(self):
@@ -28,12 +28,11 @@ class DataTransformation:
         
         '''
         try:
-            numerical_columns = ['Person Capacity', 'Multiple Rooms', 'Cleanliness Rating',
+            numerical_columns = ['Person Capacity', 'Cleanliness Rating',
                                     'Guest Satisfaction', 'Bedrooms', 'City Center (km)',
-                                    'Metro Distance (km)', 'Normalised Attraction Index',
-                                    'Normalised Restraunt Index']
+                                    'Metro Distance (km)']
             
-            categorical_columns = ['City', 'Day', 'Room Type', 'Business']
+            categorical_columns = ['Room Type', 'Multiple Rooms', 'Business']
 
             num_pipeline= Pipeline(
                 steps=[
@@ -47,8 +46,7 @@ class DataTransformation:
 
                 steps=[
                 ("imputer",SimpleImputer(strategy="most_frequent")),
-                ("one_hot_encoder",OneHotEncoder()),
-                ("scaler",StandardScaler(with_mean=False))
+                ("one_hot_encoder",OneHotEncoder())
                 ]
 
             )
@@ -77,8 +75,6 @@ class DataTransformation:
             train_df=pd.read_csv(train_path)
             test_df=pd.read_csv(test_path)
 
-            train_df = train_df.drop(['Shared Room','Private Room','Superhost','Attraction Index','Restraunt Index'],axis=1)
-            test_df = test_df.drop(['Shared Room','Private Room','Superhost','Attraction Index','Restraunt Index'],axis=1)
 
             logging.info("Read train and test data completed")
 
@@ -87,10 +83,10 @@ class DataTransformation:
             preprocessing_obj=self.get_data_transformer_object()
 
             target_column_name="Price"
-            numerical_columns = ['Person Capacity', 'Multiple Rooms', 'Cleanliness Rating',
-                                    'Guest Satisfaction', 'Bedrooms', 'City Center (km)',
-                                    'Metro Distance (km)', 'Normalised Attraction Index',
-                                    'Normalised Restraunt Index']
+            
+            # numerical_columns = ['Person Capacity', 'Cleanliness Rating',
+            #                         'Guest Satisfaction', 'Bedrooms', 'City Center (km)',
+            #                         'Metro Distance (km)']
 
             input_feature_train_df=train_df.drop(columns=[target_column_name],axis=1)
             target_feature_train_df=train_df[target_column_name]
