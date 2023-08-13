@@ -80,18 +80,18 @@
             <img src="../static/plot.svg" alt="Plot Image" width="500" height="400">
         </div> -->
 
-        <iframe src="./SVG Image and Input Example_files/airbnb_plot.html" width="650" height="550" frameborder="0"></iframe>
+        <iframe src="../static/airbnb_plot.html" width="650" height="550" frameborder="0"></iframe>
         
         
         <div class="input-container">
             <h2>Enter Values</h2>
-            <form action="file:///C:/Users/george/Desktop/Ex_files/airbnb_app/templates/%7B%7B%20url_for(&#39;predict_datapoint&#39;)%7D%7D" method="POST">
+            <form action="{{ url_for('predict_datapoint')}}" method="POST">
 
 
                 <div class="input-group">
                     <label for="city">City:</label>
-                    <input type="text" id="city" name="city" list="city-list" autocomplete="off" required="">
-                    <datalist id="city-list">
+                    <input type="text" id="city" name="city" list="city_list" autocomplete="off" required="">
+                    <datalist id="city_list">
                         <option value="Amsterdam"></option>
                         <option value="Athens"></option>
                         <option value="Barcelona"></option>
