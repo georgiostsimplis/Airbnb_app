@@ -24,7 +24,7 @@ class DataTransformation:
 
     def get_data_transformer_object(self):
         '''
-        This function si responsible for data trnasformation
+        This function is responsible for data trnasformation
         
         '''
         try:
@@ -32,7 +32,7 @@ class DataTransformation:
                                     'Guest Satisfaction', 'Bedrooms', 'City Center (km)',
                                     'Metro Distance (km)']
             
-            categorical_columns = ['Room Type', 'Multiple Rooms', 'Business']
+            categorical_columns = ['City','Room Type', 'Multiple Rooms', 'Business']
 
             num_pipeline= Pipeline(
                 steps=[
