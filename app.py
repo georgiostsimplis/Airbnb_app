@@ -48,5 +48,5 @@ def predict_datapoint():
         return render_template('modelpage.html',results=round(results[0],2))
     
 
-# if __name__=="__main__":
-#     app.run(host="0.0.0.0")        
+if __name__=="__main__":
+    app.run()        
